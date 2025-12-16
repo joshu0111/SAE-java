@@ -3,7 +3,7 @@ class Carac{
     String nomCarac;
     double valeur;
 
-    /** Constructeurs avec paramatre 
+    /** Constructeur avec paramatre 
     * @param nc chaine de caractere qui correspond au nom de la caracteristique 
     * @param val reel qui correspond a la valeur de la caracteristique 
     */
@@ -37,3 +37,4 @@ class Carac{
         }
     }
 }
+
