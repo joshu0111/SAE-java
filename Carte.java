@@ -33,15 +33,17 @@ class Carte {
         this.caracs = newCaracs;
     }
 
-    /** Retourne la valeur de la caracteristique dont le nom est passe en parametre 
+     /** Retourne la valeur de la caracteristique dont le nom est passe en parametre 
      * @param nom corrrespond au nom de la caracteristique dont on veut la valeur
      */
     public double getValeur(String nom){
-        if (nom.equals(Carac.nomCarac)){
-            return Carac.getValeur();
-        } else {
-            return -1.0;
+        double val=-1.0;
+        for (int i=0;i<caracs.length;i++){
+            if (caracs[i].getnomCarac().equals(nom)){
+                val=caracs[i].getValeur();
+            }
         }
+        return val;
     }
 
     /** Retourne la carte sur sa face visible
