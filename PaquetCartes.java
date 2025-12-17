@@ -14,7 +14,23 @@ class PaquetCartes{
     public PaquetCartes(Carte[] c){
         this.cartes=c;
     }
-    public PaquetCartes()
+    /**
+     * Constructeur a partir d'un fichier 
+     * @param NomFichier corresponds au fichier 
+     */ 
+    public PaquetCartes(String NomFichier){
+        // Creation d'un objet LectureFichier correspondant au fichier 
+        LectureFichier fichier= new LectureFichier(NomFichier);
+        String lignes = fichier.lireFichier();
+        // Cette ligne correspond au nom de chaque colonne
+        String caractere=lignes[0];
+        // Creation d'un tableay vide
+        this.cartes=new Carte[0];
+        for (int i=0;i<lignes.length;i++){
+            Carte c = new Carte(caractere, ligne[i]);
+            this.ajouterCarteFin(c)
+        }
+    }
     /**
      * Methode permettant d'ajouter une carte a notre paquets de cartes
      * @param c Carte c qui est ajouter au paquet
