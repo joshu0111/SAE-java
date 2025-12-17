@@ -40,4 +40,10 @@ class Carte {
 
     }
 
+    /** Retourne la carte sur sa face visible
+     */
+    public void setVisible(){
+        this.visible = true;
+    }
+
 }
