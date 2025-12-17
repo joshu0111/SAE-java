@@ -1,8 +1,8 @@
 class Carte {
     /** Attributs */
-    String nom; 
-    boolean visible ;
-    Carac [] caracs;
+    private String nom; 
+    private boolean visible ;
+    private Carac [] caracs;
 
     /**
      * Constructeur 
@@ -49,5 +49,16 @@ class Carte {
     public void setVisible(){
         this.visible = true;
     }
+    
+    /** methode getter pour attribut nom 
+     */
+    public void getNom(){
+        return this.nom;
+    }    
 
+    /** methode getter pour attribut  
+     */
+    public void getCaracs(){
+        return this.caracs;
+    }    
 }
