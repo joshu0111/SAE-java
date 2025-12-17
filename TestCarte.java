@@ -33,23 +33,49 @@ public class TestCarte {
 		c.ajouterCarac(car);
 		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getnomCarac(), "Taille"); 
 		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
-
 	}
-	public void test1_Carte_getValeur_normal(){
+
+
+	public void test_3_ajouterCarac_plusieurs_caracs(){
+		Carte c = new Carte("Lapin");
+		Carac car1 = new Carac("Taille", 23);
+		Carac car2 = new Carac("Poids", 20);
+		
+
+		c.ajouterCarac(car1);
+		c.ajouterCarac(car2);
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getnomCarac(), "Taille"); 
+		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
+
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[1].getnomCarac(), "Poids"); 
+		assertEquals("La taille devrait etre de 20kg", c.getCaracs()[1].getValeur(), 20.0); 
+	}
+
+	public void test_4_Carte_getValeur_normal(){
 		Carac caractere = new Carac("Voller", -100.0);
 		Carte ct = new Carte("Toto");
 		ct.ajouterCarac(caractere);
 
 		assertEquals("La valeur de la caracteristique voller doit etre -100.0", -100.0, ct.getValeur("Voller"));
-
 	}
-	public void test2_Carte_getValeur_normal(){
+
+	public void test_5_Carte_getValeur_normal(){
 		Carac caractere = new Carac("Voller", -100.0);
 		Carte ct = new Carte("Toto");
 		ct.ajouterCarac(caractere);
 
 		assertEquals("La valeur de la caracteristique voller doit etre -100.0", -1.0, ct.getValeur("Manger"));
+	}
 
+	public void test_6_setVisible_defaut(){
+		Carte c = new Carte("Lapin");
+		assertEquals("La carte ne doit pas etre visible", false, c.getVisible());
+	}
+
+	public void test_7_setVisible_visible(){
+		Carte c = new Carte("Lapin");
+		c.setVisible();
+		assertEquals("La carte devrait etre visible", true, c.getVisible());
 	}
 
 
