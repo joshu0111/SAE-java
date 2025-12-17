@@ -5,13 +5,37 @@ class Carte {
     private Carac [] caracs;
 
     /**
-     * Constructeur 
+     * Constructeur avec nom
      * @param nom 
      */
     public Carte(String nom){
         // Verifie que le nom passer en parametre ne soit pas vide 
         if ( !(nom.isBlank()) ){
             this.nom = nom; 
+        }else{
+            this.nom = "Inconnu";
+        }
+    }
+
+    /**
+     * Constructeur avec 2 chaine
+     * @param chaineNoms chaine de caractere avec les nom des caracteristiques 
+     * @param chaineValeurs chaine de caractere avec la liste des valeurs des caracteristiques 
+     */
+    public Carte(String chaineNoms, String chaineValeurs){
+        // Recuperation des valeurs individuellement 
+        String [] listeNom = chaineNoms.split(";");
+        String [] listeValeur = chaineValeurs.split(";");
+
+        // Assignation du nom de la carte 
+        this.nom = listeValeur[0];
+
+        // Ajout de toutes les caracteristiques 
+        if (listeValeur.length == listeNom.length){
+            for (int i=1; i<listeValeur.length; i++){
+                Carac newCar = new Carac(listeNom[i],Double.parseDouble(listeValeur[i]));
+                this.ajouterCarac(newCar);
+            }
         }
     }
 
@@ -38,10 +62,7 @@ class Carte {
             // Remplacement par le nouveau tableau 
             this.caracs = newCaracs;
         }
-
-
     }
-
 
      /** Retourne la valeur de la caracteristique dont le nom est passe en parametre 
      * @param nom corrrespond au nom de la caracteristique dont on veut la valeur
@@ -49,12 +70,13 @@ class Carte {
     public double getValeur(String nom){
         double val=-1.0;
         for (int i=0;i<caracs.length;i++){
-            if (caracs[i].getnomCarac().equals(nom)){
+            if (caracs[i].getNomCarac().equals(nom)){
                 val=caracs[i].getValeur();
             }
         }
         return val;
     }
+
 
     /** Retourne la carte sur sa face visible
      */
@@ -62,8 +84,6 @@ class Carte {
         return this.visible = true;
     }
 
-
-    
     //---------- METHODES GETTER ------------
 
     /** methode getter pour attribut nom 
