@@ -1,7 +1,7 @@
 class Carac{
     /* Attributs */
-    String nomCarac;
-    double valeur;
+    private String nomCarac;
+    private double valeur;
 
     /** Constructeur avec paramatre 
     * @param nc chaine de caractere qui correspond au nom de la caracteristique 
@@ -25,6 +25,13 @@ class Carac{
     }
     
     /**
+     * Methode getter pour l'attribut nomCarac
+     */
+    public String getnomCarac(){
+        return this.nomCarac;
+    }
+    
+    /**
      * Methode etreEgal qui renvoie truesi le nom passer en parametre est egal a l'attribut nomCarac
      * @param nom qui permet 
      */
@@ -37,4 +44,3 @@ class Carac{
         }
     }
 }
-
