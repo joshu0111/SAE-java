@@ -31,7 +31,7 @@ public class TestCarte {
 		Carac car = new Carac("Taille", 23);
 
 		c.ajouterCarac(car);
-		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getnomCarac(), "Taille"); 
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getNomCarac(), "Taille"); 
 		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
 	}
 
@@ -44,10 +44,10 @@ public class TestCarte {
 
 		c.ajouterCarac(car1);
 		c.ajouterCarac(car2);
-		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getnomCarac(), "Taille"); 
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getNomCarac(), "Taille"); 
 		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
 
-		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[1].getnomCarac(), "Poids"); 
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[1].getNomCarac(), "Poids"); 
 		assertEquals("La taille devrait etre de 20kg", c.getCaracs()[1].getValeur(), 20.0); 
 	}
 
@@ -78,5 +78,22 @@ public class TestCarte {
 		assertEquals("La carte devrait etre visible", true, c.getVisible());
 	}
 
+	public void test_8_constructeur_par_chaine_normal(){
+		String noms = "nom;Taille;Poids";
+		String valeurs = "Lapin;40.0;5.0";
+		Carte c = new Carte(noms, valeurs);
+		assertEquals("Le nom de la carte devrait etre Lapin", "Lapin", c.getNom());
+		assertEquals("La carte a une caracteristique au nom de Taille", "Taille", c.getCaracs()[0].getNomCarac());
+		assertEquals("La carte a une caracteristique au nom de Poids", "Poids", c.getCaracs()[1].getNomCarac());
+		assertEquals("La carte a une caracteristique au nom de Poids avec une valeur de 40", 40.0, c.getCaracs()[0].getValeur());
+		assertEquals("La carte a une caracteristique au nom de Poids avec une valeur de 5", 5.0, c.getCaracs()[1].getValeur());
+	}
 
+	public void test_9_constructeur_par_chaine_sans_caracteristiques(){
+		String noms = "nom";
+		String valeurs = "Lapin";
+		Carte c = new Carte(noms, valeurs);
+		assertEquals("Le nom de la carte devrait etre Lapin", "Lapin", c.getNom());
+		assertEquals("Il ne devrait pas y avoir de caracteristiques", null, c.getCaracs());
+	}
 }
