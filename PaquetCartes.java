@@ -68,6 +68,25 @@ class PaquetCartes{
         return supp;
     }
     /**
+     * Methode qui pioche aleatoirement une carte, la retire de la pioche puis la retire
+     */
+    public Carte piocherHasard(){
+        // Si la pioche est vide on retourne null
+        if (cartes.length==0){
+            return null;
+        }
+        Random rdm = new Random();
+        int indice=rdm.nextInt(cartes.length);
+        Carte cartePioche=cartes[indice];
+        retirerCarte(indice);
+        return cartePioche;
+    }
+    /**
+     * Methode 
+     */
+    public int trouverCarteProche(Carte c, String nc){
+    }
+    /**
      * methode getter pour le nombre de carte
      */
     public int getNbCartes(){
