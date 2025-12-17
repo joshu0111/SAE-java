@@ -48,19 +48,19 @@ class Carte {
 
     /** Retourne la carte sur sa face visible
      */
-    public void setVisible(){
-        this.visible = true;
+    public boolean setVisible(){
+        return this.visible = true;
     }
     
     /** methode getter pour attribut nom 
      */
-    public void getNom(){
+    public String getNom(){
         return this.nom;
     }    
 
     /** methode getter pour attribut  
      */
-    public void getCaracs(){
+    public Carac [] getCaracs(){
         return this.caracs;
     }    
 }
