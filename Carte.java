@@ -19,12 +19,18 @@ class Carte {
      * @param c correspond a la nouvel caracteristique
      */
     public void ajouterCarac(Carac c){
-        longueurThisCaracs = this.caracs.length; 
-        Carac [] newCaracs = new Carac[longueurThisCaracs];
+        // Assignation des anciennes valeurs 
+        int longueurThisCaracs = this.caracs.length; 
+        Carac [] newCaracs = new Carac[longueurThisCaracs+1];
         for (int i=0; i<longueurThisCaracs; i++){
-            newCaracs[i] = this.caracs
+            newCaracs[i] = this.caracs[i];
         }
 
+        // Assignation nouvelle valeur 
+        newCaracs[newCaracs.length-1] = c;
+
+        // Remplacement par le nouveau tableau 
+        this.caracs = newCaracs;
     }
 
     /** Retourne la valeur de la caracteristique dont le nom est passe en parametre 
