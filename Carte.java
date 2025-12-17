@@ -19,19 +19,29 @@ class Carte {
      * @param c correspond a la nouvel caracteristique
      */
     public void ajouterCarac(Carac c){
-        // Assignation des anciennes valeurs 
-        int longueurThisCaracs = this.caracs.length; 
-        Carac [] newCaracs = new Carac[longueurThisCaracs+1];
-        for (int i=0; i<longueurThisCaracs; i++){
-            newCaracs[i] = this.caracs[i];
+
+        // Verifie qu'il y ai des valeurs dans l'attribut carac
+        if (this.caracs == null){  
+
+            Carac [] newCaracs = {c};
+            this.caracs = newCaracs;
+        }else{
+            // Assignation des anciennes 
+            int longueurThisCaracs = this.caracs.length; 
+            Carac [] newCaracs = new Carac[longueurThisCaracs+1];
+            for (int i=0; i<longueurThisCaracs; i++){
+                newCaracs[i] = this.caracs[i];
+            }
+            // Assignation nouvelle valeur 
+            newCaracs[newCaracs.length-1] = c;
+
+            // Remplacement par le nouveau tableau 
+            this.caracs = newCaracs;
         }
 
-        // Assignation nouvelle valeur 
-        newCaracs[newCaracs.length-1] = c;
 
-        // Remplacement par le nouveau tableau 
-        this.caracs = newCaracs;
     }
+
 
      /** Retourne la valeur de la caracteristique dont le nom est passe en parametre 
      * @param nom corrrespond au nom de la caracteristique dont on veut la valeur
