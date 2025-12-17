@@ -61,16 +61,26 @@ class Carte {
     public boolean setVisible(){
         return this.visible = true;
     }
+
+
     
+    //---------- METHODES GETTER ------------
+
     /** methode getter pour attribut nom 
      */
     public String getNom(){
         return this.nom;
     }    
 
-    /** methode getter pour attribut  
+    /** methode getter pour attribut caracs
      */
     public Carac [] getCaracs(){
         return this.caracs;
-    }    
+    }   
+
+    /** methode getter pour attribut visible
+     */
+    public boolean getVisible(){
+        return this.visible;
+    }  
 }
