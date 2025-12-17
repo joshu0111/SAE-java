@@ -26,5 +26,15 @@ public class TestCarte {
 		assertEquals("Le constructeur devrait creer une carte Lapin", c.getNom() , "Lapin");
 	}
 
+	public void test_2_ajouterCarac_noraml(){
+		Carte c = new Carte("Lapin");
+		Carac car = new Carac("Taille", 23);
+
+		c.ajouterCarac(car);
+		assertEquals("La caracteristique taille devrait exister", c.getCaracs()[0].getnomCarac(), "Taille"); 
+		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
+
+	}
+
 
 }
