@@ -27,7 +27,7 @@ class Carac{
     /**
      * Methode getter pour l'attribut nomCarac
      */
-    public String getnomCarac(){
+    public String getNomCarac(){
         return this.nomCarac;
     }
     
