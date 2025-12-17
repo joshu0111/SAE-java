@@ -35,6 +35,22 @@ public class TestCarte {
 		assertEquals("La taille devrait etre de 23cm", c.getCaracs()[0].getValeur(), 23.0); 
 
 	}
+	public void test1_Carte_getValeur_normal(){
+		Carac caractere = new Carac("Voller", -100.0);
+		Carte ct = new Carte("Toto");
+		ct.ajouterCarac(caractere);
+
+		assertEquals("La valeur de la caracteristique voller doit etre -100.0", -100.0, ct.getValeur("Voller"));
+
+	}
+	public void test2_Carte_getValeur_normal(){
+		Carac caractere = new Carac("Voller", -100.0);
+		Carte ct = new Carte("Toto");
+		ct.ajouterCarac(caractere);
+
+		assertEquals("La valeur de la caracteristique voller doit etre -100.0", -1.0, ct.getValeur("Manger"));
+
+	}
 
 
 }
