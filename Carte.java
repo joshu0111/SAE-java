@@ -37,7 +37,11 @@ class Carte {
      * @param nom corrrespond au nom de la caracteristique dont on veut la valeur
      */
     public double getValeur(String nom){
-
+        if (nom.equals(Carac.nomCarac)){
+            return Carac.getValeur();
+        } else {
+            return -1.0;
+        }
     }
 
     /** Retourne la carte sur sa face visible
