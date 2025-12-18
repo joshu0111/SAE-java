@@ -88,7 +88,31 @@ class PaquetCartes{
         retirerCarte(indice);
         return cartePioche;
     }
-
+    /**
+     * Methode qui permet de trouver l'indice de la carte du paquet la plus proche de la carte selon la caracteristique
+     * @param c Carte que l'on souhaite trouver le plus proche
+     * @param nc Nom de la caracteristique 
+     */
+    public int trouverCarteProche(Carte c, String nc){
+        // Test si le paquet est vide
+        if (cartes.length==0){
+            return -1;
+        }
+        // Valeur Reference que l'on souhaite trouver le plus proche
+        double VRef=c.getValeur(nc);
+        int indice=0;
+        double VCourante=cartes[0].getValeur(nc);
+        double diffmin=Math.abs(VCourante-VRef);
+        for (int i=1;i<cartes.length;i++){
+            VCourante=cartes[i].getValeur(nc);
+            double diff=Math.abs(VCourante-VRef);
+            if (diffmin>diff){
+                diffmin=diff;
+                indice=i;
+            }
+        }
+        return indice; 
+    }
     /**
      * methode getter pour le nombre de carte
      */
@@ -106,4 +130,15 @@ class PaquetCartes{
         }
         return cartes[place];
     }
+    /**
+     * methode to string
+     */
+    public String toString(){
+        // String resultat="--------------------\n";
+        for (int i=0;i<cartes.length;i++){
+            resultat += i +". carte(" + cartes[i].toString() + ")\n"
+        }
+        // resultat+="--------------------"
+        return resultat;
+    }  
 }
