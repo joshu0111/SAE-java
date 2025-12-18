@@ -9,6 +9,7 @@ class PaquetCartes{
     public PaquetCartes(){
         this.cartes = new Carte[0];
     }
+
     /**
      * Constructeur a partir d'un tableau de cartes
      * @param c correspond au tableau de cartes
@@ -16,6 +17,7 @@ class PaquetCartes{
     public PaquetCartes(Carte[] c){
         this.cartes=c;
     }
+
     /**
      * Constructeur a partir d'un fichier 
      * @param NomFichier corresponds au fichier 
@@ -23,16 +25,17 @@ class PaquetCartes{
     public PaquetCartes(String NomFichier){
         // Creation d'un objet LectureFichier correspondant au fichier 
         LectureFichier fichier= new LectureFichier(NomFichier);
-        String lignes = fichier.lireFichier();
+        String [] lignes = fichier.lireFichier();
         // Cette ligne correspond au nom de chaque colonne
         String caractere=lignes[0];
         // Creation d'un tableay vide
         this.cartes=new Carte[0];
         for (int i=0;i<lignes.length;i++){
-            Carte c = new Carte(caractere, ligne[i]);
-            this.ajouterCarteFin(c)
+            Carte c = new Carte(caractere, lignes[i]);
+            this.ajouterCarteFin(c);
         }
     }
+
     /**
      * Methode permettant d'ajouter une carte a notre paquets de cartes
      * @param c Carte c qui est ajouter au paquet
@@ -48,6 +51,7 @@ class PaquetCartes{
         nv[cartes.length]=c;
         this.cartes=nv;
     }
+
     /**
      * Methode permettant de supprimer une carte a la place "place"
      * @param place place de la carte qu'on souhaite retirer
@@ -69,6 +73,7 @@ class PaquetCartes{
         this.cartes=nv;
         return supp;
     }
+
     /**
      * Methode qui pioche aleatoirement une carte, la retire de la pioche puis la retire
      */
@@ -83,17 +88,14 @@ class PaquetCartes{
         retirerCarte(indice);
         return cartePioche;
     }
-    /**
-     * Methode 
-     */
-    public int trouverCarteProche(Carte c, String nc){
-    }
+
     /**
      * methode getter pour le nombre de carte
      */
     public int getNbCartes(){
         return this.cartes.length;
     }
+    
     /**
      * methode getter pour la carte correspond a la place 
      * @param place correspond a la place de la carte rechercher
