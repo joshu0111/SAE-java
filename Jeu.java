@@ -21,20 +21,28 @@ class Jeu{
         this.main= new PaquetCartes();
         // On pioche le nombre de carte necessaires pour le joueur
         for(int i=0;i<nb;i++){
-            Carte c=pioche.piocherHasard();
-            if (c!=null){
-                main.ajouterCarteFin();
-            }
+            this.piocher();
         }
     }
+
+    /**
+     * Methode qui permet de piocher une carte dans la pioche et de l'ajouter dans la main du joueur
+     */
+    public void piocher(){
+        Carte c=pioche.piocherHasard();
+        if (c!=null){
+            main.ajouterCarteFin();
+        }
+    }
+    
     /**
      * Une manche de jeu
      */
     public void jouerUneManche(){
         Scanner sc=new Scanner(System.in);
         Random rm=new Random();
-
-        
     }
 
 }
+
+
