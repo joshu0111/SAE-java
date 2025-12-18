@@ -134,9 +134,10 @@ class PaquetCartes{
      * methode to string
      */
     public String toString(){
-        // String resultat="--------------------\n";
+        // 
+        String resultat ="";
         for (int i=0;i<cartes.length;i++){
-            resultat += i +". carte(" + cartes[i].toString() + ")\n"
+            resultat += i +". carte(" + cartes[i].toString() + ")\n";
         }
         // resultat+="--------------------"
         return resultat;
