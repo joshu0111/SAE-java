@@ -31,7 +31,7 @@ class Jeu{
     public void piocher(){
         Carte c=pioche.piocherHasard();
         if (c!=null){
-            main.ajouterCarteFin();
+            main.ajouterCarteFin(c);
         }
     }
     
@@ -41,8 +41,54 @@ class Jeu{
     public void jouerUneManche(){
         Scanner sc=new Scanner(System.in);
         Random rm=new Random();
+
+        Carte cartePioche=pioche.piocherHasard();
+        if (cartePioche==null){
+            return;
+        }
+        cartePioche.setVisible();
+        System.out.println("Voici la carte pioche par le joueur : " + cartePioche);
+        Carac[] caracs = cartePioche.getCaracs();
+        int indiceCarac = rm.nextInt(caracs.length);
+        String carachasard = caracs[indiceCarac].getNomCarac();
+        System.out.println("caracteristique testee :" + carachasard);
+        System.out.println("Voici la main du joueur");
+        for (int i=0; i<main.getNbCartes(); i++) {
+            System.out.println(i + ". " + main.getCarte(i));
+        }
+        System.out.print("Choisissez la carte la plus proche :  ");
+        int choix= sc.nextInt();
+        int bc= main.trouverCarteProche(cartePioche, carachasard);
+        Carte carteJoue= main.getCarte(choix);
+        if (choix==bc){
+            System.out.println("Vous avez choisit la meilleure carte.");
+            main.retirerCarte(choix);
+        } else{
+            System.out.println("Dommage, il y'avais une carte plus proche.");
+            Carte mr=main.getCarte(bc);
+            mr.setVisible();
+            System.out.println("Voici la meilleure carte : " + mr);
+            main.retirerCarte(choix);
+            main.retirerCarte(bc);
+            piocher();
+            piocher();
+        }
     }
+        
+        /**
+         * Methode qui permet de jouer une partie complete
+         */
+    public void jouer(){
+        while (main.getNbCartes() > 0 && pioche.getNbCartes() > 0) {
+            jouerUneManche();
+        }
+        if (main.getNbCartes() == 0) {
+            System.out.println("Victoire, vous avez joue toute vos cartes.");
+        } else {
+            System.out.println("Defaite, la pioche est vide.");
+        }
+    }
+    
+
 
 }
-
-
