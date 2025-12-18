@@ -7,7 +7,7 @@ import libtest.*;
  * classe de test qui permet de verifier que la classe Paquet
  * fonctionne correctement
  */
-public class TestPaquetCartes {
+public class TestPaquet {
 
 	/**
 	 * methode de lancement des tests
