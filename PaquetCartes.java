@@ -30,7 +30,7 @@ class PaquetCartes{
         String caractere=lignes[0];
         // Creation d'un tableay vide
         this.cartes=new Carte[0];
-        for (int i=0;i<lignes.length;i++){
+        for (int i=1;i<lignes.length;i++){
             Carte c = new Carte(caractere, lignes[i]);
             this.ajouterCarteFin(c);
         }
@@ -121,8 +121,8 @@ class PaquetCartes{
     }
     
     /**
-     * methode getter pour la carte correspond a la place 
-     * @param place correspond a la place de la carte rechercher
+     * methode getter qui renvoie la carte a l'indice fourni par le parrametre place  
+     * @param place correspond l'indice de la place de la carte rechercher
      */
     public Carte getCarte(int place){
         if (place<0 || place>=cartes.length){
