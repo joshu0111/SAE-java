@@ -55,7 +55,7 @@ public class TestPaquetCartes {
 		Carte c = new Carte("tigre");
 		assertEquals("Le nombre de carte dans le paquet devrait etre 0", 0, p.getNbCartes());
 		p.ajouterCarteFin(c);
-		assertEquals("Le nombre de carte dans le paquet devrait etre 3", 3, p.getNbCartes());
+		assertEquals("Le nombre de carte dans le paquet devrait etre 1", 1, p.getNbCartes());
 	}
 
 	public void test_6_retirerCarte(){
@@ -66,37 +66,44 @@ public class TestPaquetCartes {
 		assertEquals("La derniere carte devrait s'appelait lapin nain", "lapin nain", p.getCarte(0).getNom());
 	}
 
-	public void test_6_retirerCarte_paquet_vide(){
+	public void test_7_retirerCarte_paquet_vide(){
 		PaquetCartes p = new PaquetCartes();
-		assertEquals("Le nombre de carte dans le paquet devrait etre 2", 2, p.getNbCartes());
-		p.retirerCarte(1);
-		assertEquals("Le nombre de carte dans le paquet devrait etre 1", 1, p.getNbCartes());
-		assertEquals("La derniere carte devrait s'appelait lapin nain", "lapin nain", p.getCarte(0).getNom());
+		assertEquals("Le nombre de carte dans le paquet devrait etre 0", 0, p.getNbCartes());
+		p.retirerCarte(0);
+		assertEquals("La methode retirerCarte est sencé renvoyer null", null, p.retirerCarte(0));
+		assertEquals("Le nombre de carte dans le paquet devrait etre 0", 0, p.getNbCartes());
 	}
 
-	public void test_7_piocherHasard(){
+	public void test_8_piocherHasard(){
 		PaquetCartes p = new PaquetCartes("../cartes/fichierTest.csv");
 		assertEquals("Le nombre de carte dans le paquet devrait etre 2", 2, p.getNbCartes());
-		assertEquals("Le nombre de carte dans le paquet devrait etre 2", 2, p.getNbCartes());
-		
+		p.piocherHasard();		
 		assertEquals("Le nombre de carte dans le paquet devrait etre 1", 1, p.getNbCartes());
 	}
 
-
-	public void test_X_trouverCarteProche(){
-		PaquetCartes p = new PaquetCartes("cartes/fichierTest.csv");
+	public void test_9_piocherHasard_un_element(){
+		Carte[] c = {new Carte("Lapin")};
+		PaquetCartes p = new PaquetCartes(c);
+		assertEquals("Le nombre de carte dans le paquet devrait etre 1", 1, p.getNbCartes());
+		assertEquals("La carte devrait s'appeler Lapin", "Lapin", p.piocherHasard().getNom());		
+		assertEquals("Le nombre de carte dans le paquet devrait etre 0", 0, p.getNbCartes());
+	}
+	
+	public void test_10_trouverCarteProche(){
+		PaquetCartes p = new PaquetCartes("../cartes/fichierTest.csv");
 		Carte c = new Carte("Tigre");
 		Carac taille = new Carac("taille", 80);
 		c.ajouterCarac(taille);
 		assertEquals("L'indice de la carte la plus proche est 1", 1, p.trouverCarteProche(c, "taille"));
 	}
 	
-	public void test_X_trouverCarteProche_vide(){
+	public void test_11_trouverCarteProche_vide(){
 		PaquetCartes p = new PaquetCartes();
 		Carte c = new Carte("Tigre");
 		Carac taille = new Carac("taille", 80);
 		c.ajouterCarac(taille);
 		assertEquals("Le paquet de cartes est vide alors ca devrait etre -1", -1, p.trouverCarteProche(c, "taille"));
 	}
+	
 }
 
