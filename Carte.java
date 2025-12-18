@@ -77,11 +77,28 @@ class Carte {
         return val;
     }
 
-
     /** Retourne la carte sur sa face visible
      */
     public boolean setVisible(){
         return this.visible = true;
+    }
+
+    /** Methode toString
+     */
+    public String toString(){
+        String res = "" + this.nom + " -> ";
+        if ( visible == false ){
+            for (int i=0; i<this.caracs.length; i++){
+                res += "*"+this.caracs[i].getNomCarac()+" ???* ";
+            }
+        }else{
+            for (int i=0; i<this.caracs.length; i++){
+                res += "*"+this.caracs[i].getNomCarac()+" "+this.caracs[i].getValeur()+"* ";
+            }
+        }
+
+
+        return res;
     }
 
     //---------- METHODES GETTER ------------
