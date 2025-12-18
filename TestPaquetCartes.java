@@ -83,6 +83,20 @@ public class TestPaquetCartes {
 	}
 
 
-
+	public void test_X_trouverCarteProche(){
+		PaquetCartes p = new PaquetCartes("cartes/fichierTest.csv");
+		Carte c = new Carte("Tigre");
+		Carac taille = new Carac("taille", 80);
+		c.ajouterCarac(taille);
+		assertEquals("L'indice de la carte la plus proche est 1", 1, p.trouverCarteProche(c, "taille"));
+	}
+	
+	public void test_X_trouverCarteProche_vide(){
+		PaquetCartes p = new PaquetCartes();
+		Carte c = new Carte("Tigre");
+		Carac taille = new Carac("taille", 80);
+		c.ajouterCarac(taille);
+		assertEquals("Le paquet de cartes est vide alors ca devrait etre -1", -1, p.trouverCarteProche(c, "taille"));
+	}
 }
 
