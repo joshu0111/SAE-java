@@ -62,6 +62,7 @@ class Jeu{
         afficherTitre("MAIN DU JOUEUR");
         System.out.println(main.toString());
         afficherTitre("");
+
         afficherTitre("CHOIX");
         System.out.println("Quelle est la carte de votre main la plus proche ?");
         // On demande au joueur de faire un choix entre 0 et main-1
@@ -97,7 +98,8 @@ class Jeu{
         }
     }
     /**
-     * 
+     * Methode qui permet d'afficher entre tirets
+     * @param mot mot que l'on souhaite afficher
      */
     public void afficherTitre(String mot){
         String res = "";
@@ -127,10 +129,10 @@ class Jeu{
         while (main.getNbCartes() > 0 && pioche.getNbCartes() > 0) {
             jouerUneManche();
         }
-        if (main.getNbCartes() == 0) {
-            System.out.println("Victoire, vous avez joue toute vos cartes.");
-        } else {
+        if (pioche.getNbCartes() == 0) {
             System.out.println("Defaite, la pioche est vide.");
+        } else {
+            System.out.println("Victoire, vous avez joue toute vos cartes.");
         }
     }
 }
