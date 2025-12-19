@@ -88,7 +88,25 @@ class Jeu{
             System.out.println("Defaite, la pioche est vide.");
         }
     }
-    
 
+    
+	(String mot)
+    String res = "";
+      if (mot.isBlank()){
+          for (int i=0; i<80; i++){
+              res += "-";
+          }
+      }
+      else {
+          int moitie = (80-mot.length())/2;
+          for (int i=0; i<moitie;i++){
+              res+= "-"; 
+          }
+          res += mot;
+          for (int i=res.length(); i<80; i++){
+              res+= "-"; 
+          }
+      }
+      System.out.println(res); 
 
 }
